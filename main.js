@@ -5,6 +5,8 @@ const tilesCount = 20;
 let playerPosX = 10, playerPosY = 10;
 let applePosX = 15, applePosY = 15;
 let xVelocity = 0, yVelocity = 0;
+let snakeBoxes = [];
+let tailLength = 4;
 
 window.onload = function () {
     // get canvas object from DOM
@@ -49,6 +51,13 @@ function gameLoop() {
     screen.fillStyle = 'yellow';
     screen.fillRect(playerPosX * tilesCount, playerPosY * tilesCount ,tilesCount - 2, tilesCount - 2);
 
+    // loop through the snake body and add all boxes on the screen
+    // for(let i = 0 ; i < snakeBoxes.length; i++) {
+    //     screen.fillRect(snakeBoxes[i].x * tilesCount, snakeBoxes[i].y * tilesCount ,tilesCount - 2, tilesCount - 2);
+    // }
+    
+    // create a snake body by adding every pixel where the player moves
+    // snakeBoxes.push({ x: playerPosX, y: playerPosY });
 
     // showing apple
     screen.fillStyle = "red";
@@ -56,10 +65,10 @@ function gameLoop() {
 
     // collision with apple - re-initiate apple somewhere else on the screen
     // if snake's head collides with apple
-    // if (playerPosX === applePosX && playerPosY === applePosY) {
-    //     applePosX = Math.floor(Math.random() * tilesCount);
-    //     applePosY = Math.floor(Math.random() * tilesCount);
-    // }
+    if (playerPosX === applePosX && playerPosY === applePosY) {
+        applePosX = Math.floor(Math.random() * tilesCount);
+        applePosY = Math.floor(Math.random() * tilesCount);
+    }
 
 }
 
