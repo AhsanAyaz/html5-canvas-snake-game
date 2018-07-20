@@ -7,6 +7,7 @@ let applePosX = 15, applePosY = 15;
 let xVelocity = 0, yVelocity = 0;
 let snakeBoxes = [];
 let tailLength = 4;
+// let score = 0;
 
 window.onload = function () {
     // get canvas object from DOM
@@ -55,15 +56,17 @@ function gameLoop() {
         screen.fillRect(snakeBoxes[i].x * tilesCount, snakeBoxes[i].y * tilesCount ,tilesCount - 2, tilesCount - 2);
 
         // check if the snake collides with its own tail
-        // if(snakeBoxes[i].x === playerPosX && snakeBoxes[i].y === playerPosY) {
-        //     tailLength = 4;   // reset the tail length
+        if(snakeBoxes[i].x === playerPosX && snakeBoxes[i].y === playerPosY) {
+            tailLength = 4;   // reset the tail length
 
-        //     // also, reset the coordinates to what was at the game start. set the velocities to 0
-        //     // playerPosX = 10;
-        //     // playerPosY = 10;
-        //     // xVelocity = 0;
-        //     // yVelocity = 0;
-        // }
+            // also, reset the coordinates to what was at the game start. set the velocities to 0
+            playerPosX = 10;
+            playerPosY = 10;
+            xVelocity = 0;
+            yVelocity = 0;
+
+            // score = 0;
+        }
     }
     
     // create a snake body by adding every pixel where the player moves
@@ -83,7 +86,12 @@ function gameLoop() {
         tailLength++;    // upon eating an apple, grow the snake's length
         applePosX = Math.floor(Math.random() * tilesCount);
         applePosY = Math.floor(Math.random() * tilesCount);
+        // score++;
     }
+
+    // screen.font="14px TimesNewRoman";
+    // screen.strokeStyle = 'white';
+    // screen.strokeText(`Score: ${score}`, 10, 20);
 
 }
 
