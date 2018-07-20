@@ -7,7 +7,7 @@ let applePosX = 15, applePosY = 15;
 let xVelocity = 0, yVelocity = 0;
 let snakeBoxes = [];
 let tailLength = 4;
-// let score = 0;
+let score = 0;
 
 window.onload = function () {
     // get canvas object from DOM
@@ -65,7 +65,7 @@ function gameLoop() {
             xVelocity = 0;
             yVelocity = 0;
 
-            // score = 0;
+            score = 0;
         }
     }
     
@@ -86,12 +86,12 @@ function gameLoop() {
         tailLength++;    // upon eating an apple, grow the snake's length
         applePosX = Math.floor(Math.random() * tilesCount);
         applePosY = Math.floor(Math.random() * tilesCount);
-        // score++;
+        score++;
     }
 
-    // screen.font="14px TimesNewRoman";
-    // screen.strokeStyle = 'white';
-    // screen.strokeText(`Score: ${score}`, 10, 20);
+    screen.font="14px TimesNewRoman";
+    screen.strokeStyle = 'white';
+    screen.strokeText(`Score: ${score}`, 10, 20);
 
 }
 
