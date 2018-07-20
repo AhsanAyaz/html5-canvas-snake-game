@@ -23,22 +23,23 @@ window.onload = function () {
 
 function gameLoop() {
 
+    // move the player/snake
     playerPosX += xVelocity;
     playerPosY += yVelocity;
 
     // Keep the player on the canvas - Collision with walls
-    // if(playerPosX < 0) {    // if player goes beyond left boundary, appear on the right
-    //     playerPosX = tilesCount - 1;
-    // }
-    // if(playerPosX > tilesCount - 1) {       // if player goes beyond right boundary, appear on the left
-    //     playerPosX = 0;
-    // }
-    // if(playerPosY < 0) {        // if player goes beyond top boundary, appear at the bottom
-    //     playerPosY = tilesCount - 1;
-    // }
-    // if(playerPosY > tilesCount - 1) {       // if player goes beyond bottom boundar, appear at the top
-    //     playerPosY = 0;
-    // }
+    if(playerPosX < 0) {    // if player goes beyond left boundary, appear on the right
+        playerPosX = tilesCount - 1;
+    }
+    if(playerPosX > tilesCount - 1) {       // if player goes beyond right boundary, appear on the left
+        playerPosX = 0;
+    }
+    if(playerPosY < 0) {        // if player goes beyond top boundary, appear at the bottom
+        playerPosY = tilesCount - 1;
+    }
+    if(playerPosY > tilesCount - 1) {       // if player goes beyond bottom boundar, appear at the top
+        playerPosY = 0;
+    }
 
     // game screen background
     screen.fillStyle = '#000';
@@ -52,6 +53,14 @@ function gameLoop() {
     // showing apple
     screen.fillStyle = "red";
     screen.fillRect(applePosX * tilesCount, applePosY * tilesCount, tilesCount - 2, tilesCount - 2);
+
+    // collision with apple - re-initiate apple somewhere else on the screen
+    // if snake's head collides with apple
+    // if (playerPosX === applePosX && playerPosY === applePosY) {
+    //     applePosX = Math.floor(Math.random() * tilesCount);
+    //     applePosY = Math.floor(Math.random() * tilesCount);
+    // }
+
 }
 
 function onKeyUp(event) {
