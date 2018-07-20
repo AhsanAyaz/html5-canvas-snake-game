@@ -53,14 +53,25 @@ function gameLoop() {
     // loop through the snake body and add all boxes on the screen
     for(let i = 0 ; i < snakeBoxes.length; i++) {
         screen.fillRect(snakeBoxes[i].x * tilesCount, snakeBoxes[i].y * tilesCount ,tilesCount - 2, tilesCount - 2);
+
+        // check if the snake collides with its own tail
+        // if(snakeBoxes[i].x === playerPosX && snakeBoxes[i].y === playerPosY) {
+        //     tailLength = 4;   // reset the tail length
+
+        //     // also, reset the coordinates to what was at the game start. set the velocities to 0
+        //     // playerPosX = 10;
+        //     // playerPosY = 10;
+        //     // xVelocity = 0;
+        //     // yVelocity = 0;
+        // }
     }
     
     // create a snake body by adding every pixel where the player moves
     snakeBoxes.push({ x: playerPosX, y: playerPosY });
 
-    // while(snakeBoxes.length > tailLength) {
-    //     snakeBoxes.shift();     // remove the first (or the oldest) box. Which means snake's tail
-    // }
+    while(snakeBoxes.length > tailLength) {
+        snakeBoxes.shift();     // remove the first (or the oldest) box. Which means snake's tail
+    }
 
     // showing apple
     screen.fillStyle = "red";
@@ -69,7 +80,7 @@ function gameLoop() {
     // collision with apple - re-initiate apple somewhere else on the screen
     // if snake's head collides with apple
     if (playerPosX === applePosX && playerPosY === applePosY) {
-        // tailLength++;    // upon eating an apple, grow the snake's length
+        tailLength++;    // upon eating an apple, grow the snake's length
         applePosX = Math.floor(Math.random() * tilesCount);
         applePosY = Math.floor(Math.random() * tilesCount);
     }
