@@ -49,15 +49,18 @@ function gameLoop() {
 
     // showing snake
     screen.fillStyle = 'yellow';
-    screen.fillRect(playerPosX * tilesCount, playerPosY * tilesCount ,tilesCount - 2, tilesCount - 2);
 
     // loop through the snake body and add all boxes on the screen
-    // for(let i = 0 ; i < snakeBoxes.length; i++) {
-    //     screen.fillRect(snakeBoxes[i].x * tilesCount, snakeBoxes[i].y * tilesCount ,tilesCount - 2, tilesCount - 2);
-    // }
+    for(let i = 0 ; i < snakeBoxes.length; i++) {
+        screen.fillRect(snakeBoxes[i].x * tilesCount, snakeBoxes[i].y * tilesCount ,tilesCount - 2, tilesCount - 2);
+    }
     
     // create a snake body by adding every pixel where the player moves
-    // snakeBoxes.push({ x: playerPosX, y: playerPosY });
+    snakeBoxes.push({ x: playerPosX, y: playerPosY });
+
+    // while(snakeBoxes.length > tailLength) {
+    //     snakeBoxes.shift();     // remove the first (or the oldest) box. Which means snake's tail
+    // }
 
     // showing apple
     screen.fillStyle = "red";
@@ -66,6 +69,7 @@ function gameLoop() {
     // collision with apple - re-initiate apple somewhere else on the screen
     // if snake's head collides with apple
     if (playerPosX === applePosX && playerPosY === applePosY) {
+        // tailLength++;    // upon eating an apple, grow the snake's length
         applePosX = Math.floor(Math.random() * tilesCount);
         applePosY = Math.floor(Math.random() * tilesCount);
     }
