@@ -4,7 +4,7 @@ const FPS = 10;
 const tilesCount = 20;
 let playerPosX = 10, playerPosY = 10;
 let applePosX = 15, applePosY = 15;
-// let xVelocity = 0, yVelocity = 0;
+let xVelocity = 0, yVelocity = 0;
 
 window.onload = function () {
     // get canvas object from DOM
@@ -23,8 +23,22 @@ window.onload = function () {
 
 function gameLoop() {
 
-    // playerPosX += xVelocity;
-    // playerPosY += yVelocity;
+    playerPosX += xVelocity;
+    playerPosY += yVelocity;
+
+    // Keep the player on the canvas - Collision with walls
+    // if(playerPosX < 0) {    // if player goes beyond left boundary, appear on the right
+    //     playerPosX = tilesCount - 1;
+    // }
+    // if(playerPosX > tilesCount - 1) {       // if player goes beyond right boundary, appear on the left
+    //     playerPosX = 0;
+    // }
+    // if(playerPosY < 0) {        // if player goes beyond top boundary, appear at the bottom
+    //     playerPosY = tilesCount - 1;
+    // }
+    // if(playerPosY > tilesCount - 1) {       // if player goes beyond bottom boundar, appear at the top
+    //     playerPosY = 0;
+    // }
 
     // game screen background
     screen.fillStyle = '#000';
@@ -41,22 +55,22 @@ function gameLoop() {
 }
 
 function onKeyUp(event) {
-    // switch(event.keyCode) {
-    //     case 37:    // left
-    //         xVelocity = -1;      // go left
-    //         yVelocity = 0;      // no Y axis movement
-    //         break;
-    //     case 38:    // up
-    //         yVelocity = -1;     // go up
-    //         xVelocity = 0;      // no X axis movement
-    //         break;
-    //     case 39:    // right
-    //         xVelocity = 1;      // go right
-    //         yVelocity = 0;      // no Y axis movement
-    //         break;
-    //     case 40:    // down
-    //         yVelocity = 1;      // go down
-    //         xVelocity = 0;      // no X axis movement
-    //         break;
-    // }
+    switch(event.keyCode) {
+        case 37:    // left
+            xVelocity = -1;      // go left
+            yVelocity = 0;      // no Y axis movement
+            break;
+        case 38:    // up
+            yVelocity = -1;     // go up
+            xVelocity = 0;      // no X axis movement
+            break;
+        case 39:    // right
+            xVelocity = 1;      // go right
+            yVelocity = 0;      // no Y axis movement
+            break;
+        case 40:    // down
+            yVelocity = 1;      // go down
+            xVelocity = 0;      // no X axis movement
+            break;
+    }
 }
