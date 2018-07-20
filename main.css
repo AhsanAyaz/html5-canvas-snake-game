@@ -1,0 +1,10 @@
+.game-container {
+    display: flex;
+    justify-content: center;
+}
+
+#gameCanvas {
+    width: 400px;
+    height: 400px;
+    margin: 40px auto;
+}
