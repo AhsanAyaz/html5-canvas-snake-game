@@ -7,6 +7,10 @@ This game is part of a workshop presented at NgGirls Karachi Workshop 3 of #road
 
 [Slides Link](https://slides.com/ahsanayaz/creating-games-with-html5-js)
 
+## VIDEO SERIES (explanation in URDU/HINDI)
+
+[Youtube Playlist](https://www.youtube.com/playlist?list=PL2sQdFoGnLIjChx3VzxPDcDnylzbb8nMY)
+
 ## LIVE DEMO
 The game is live here [https://ahsanayaz.github.io/html5-canvas-snake-game/](https://ahsanayaz.github.io/html5-canvas-snake-game/)
 

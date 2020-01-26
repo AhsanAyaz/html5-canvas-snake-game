@@ -21,16 +21,23 @@ html, body {
 .game-container__page-header__links__link:hover,
 .game-container__page-header__links__link:active,
 .game-container__page-header__links__link:visited {
-    display: block;
+    display: flex;
     text-decoration: underline;
     color: black;
     margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .game-container__page-header__links__link img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+}
+
+.game-container__page-header__links__link img#youtubeLogo {
+    width: 100px;
+    height: 100px;
 }
 
 .game-container__page-header__links__link:hover
